@@ -10,37 +10,41 @@ Usage
 
 Codeine can operate as either a global or module-local dependency container.  Using it globally is the least flexible, but presents the simplest syntax.
 
-    require 'codeine'
-    Codeine.register(:logger){Logger.new}
+```ruby
+require 'codeine'
+Codeine.register(:logger){Logger.new}
 
-    class Foo
-      codeine_inject :logger
-      
-      def initialize
-        logger.log "Initialized..."
-      end
-    end
+class Foo
+  codeine_inject :logger
+  
+  def initialize
+    logger.log "Initialized..."
+  end
+end
+```
 
 
 For library code, and for larger projects, it's probably a better idea to segregate the containers.
 
-    require 'codeine'
+```ruby
+require 'codeine'
 
 
-    module ProjectA
-      class Foo
-        codeine_inject :logger
+module ProjectA
+  class Foo
+    codeine_inject :logger
 
-        def initialize
-          logger.log "Initialized..."
-        end
-      end
+    def initialize
+      logger.log "Initialized..."
     end
+  end
+end
+```
 
-    container = Codeine.container_for(ProjectA)
-    container.register(:logger){Logger.new}
+container = Codeine.container_for(ProjectA)
+container.register(:logger){Logger.new}
 
-    foo = ProjectA::Foo.new
+foo = ProjectA::Foo.new
 
 
 The the container bound to the ProjectA module will only service injection requests from classes/modules that reside within it
