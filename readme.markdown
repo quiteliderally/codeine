@@ -10,7 +10,7 @@ Usage
 
 Codeine can operate as either a global or module-local dependency container.  Using it globally is the least flexible, but presents the simplest syntax.
 
-    require 'Codeine'
+    require 'codeine'
     Codeine.register(:logger){Logger.new}
 
     class Foo
@@ -24,7 +24,7 @@ Codeine can operate as either a global or module-local dependency container.  Us
 
 For library code, and for larger projects, it's probably a better idea to segregate the containers.
 
-    require 'Codeine'
+    require 'codeine'
 
 
     module ProjectA
