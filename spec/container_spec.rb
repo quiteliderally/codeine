@@ -52,4 +52,13 @@ describe Codeine::Container do
     end
   end
 
+  describe "#configure" do
+    it "should accept a block and yield self" do
+      container.configure do |c|
+        c.register(:foo) {"bar"}  
+      end
+      container.get(:foo).should == "bar"
+    end
+  end
+
 end

@@ -29,6 +29,14 @@ module Codeine
     end
     alias :[] :get
 
+    def configure(mod=nil, &block)
+      if mod.nil? 
+        default_container.configure(&block)
+      else
+        container_for(mod).configure(&block)
+      end
+    end
+
   end
 
   module Utility

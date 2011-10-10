@@ -29,5 +29,9 @@ module Codeine
     def filter(pattern, &block)
       filters.push :pattern => pattern, :block => block
     end
+
+    def configure
+      yield self
+    end
   end
 end

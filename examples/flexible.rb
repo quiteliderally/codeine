@@ -21,11 +21,13 @@ module BarModule
 end
 
 
-container_foo = Codeine.container_for(FooModule)
-container_foo.register(:logger){"the fancy logger for FooModule"}
+Codeine.configure(FooModule) do |c|
+  c.register(:logger){"the fancy logger for FooModule"}
+end
 
-container_bar = Codeine.container_for(BarModule)
-container_bar.register(:logger){"the simple logger for BarModule"}
+Codeine.configure(BarModule) do |c|
+  c.register(:logger){"the simple logger for BarModule"}
+end
 
 
 FooModule::A.new 

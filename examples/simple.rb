@@ -2,7 +2,9 @@ $LOAD_PATH.unshift File.dirname(__FILE__) + '/../lib'
 require 'codeine'
 
 Codeine.activate
-Codeine.register(:logger){"some logger"}
+Codeine.configure do |c|
+  c.register(:logger){"some logger"}
+end
 
 module FooModule
   class A
