@@ -43,12 +43,13 @@ module ProjectA
   end
 end
 
-container = Codeine.container_for(ProjectA)
-container.register(:logger){Logger.new}
+Codeine.configure(ProjectA) do
+  c.register(:logger){Logger.new}
+end
 
 foo = ProjectA::Foo.new
 ```
 
-The the container bound to the ProjectA module will only service injection requests from classes/modules that reside within it
+The container bound to the ProjectA module will only service injection requests from classes/modules that reside within it
 
 
