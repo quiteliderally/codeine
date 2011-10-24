@@ -9,7 +9,7 @@ module Codeine
     #automatically called later in this file
     def activate()
       Module.send(:include, Codeine::Containable)
-      Class.send(:include, Codeine::Injectable)
+      Module.send(:include, Codeine::Injectable)
     end
 
     def container_for(mod)
