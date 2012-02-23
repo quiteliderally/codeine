@@ -14,9 +14,9 @@ module Codeine
       services[key.to_sym] = block
     end
 
-    def get(key)
+    def get(key, args = [])
       key = key.to_sym
-      service = services[key].call
+      service = services[key].call(*args)
       filters.each do |f|
         if key.to_s =~ f[:pattern]
           f[:block].call(key, service)

@@ -22,12 +22,6 @@ describe Codeine::Container do
       container.get(:foo).should == hash
     end
 
-    it "should be aliased to []" do
-      hash = Hash.new
-      container.register(:foo){hash}
-
-      container[:foo].should == hash
-    end
   end
 
   describe "#filter" do
